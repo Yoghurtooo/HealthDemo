@@ -11,16 +11,16 @@
 @implementation HistoryRecord
 
 /*
-WCDB_IMPLEMENTATION(HistoryRecord)
-WCDB_SYNTHESIZE(<#SYNTHESIZE1#>)
-WCDB_SYNTHESIZE(<#SYNTHESIZE2#>)
-WCDB_SYNTHESIZE(<#SYNTHESIZE3#>)
-WCDB_SYNTHESIZE(<#SYNTHESIZE4#>)
-WCDB_SYNTHESIZE_COLUMN(<#SYNTHESIZE5#>, "<#column name#>")   // Custom column name
+   WCDB_IMPLEMENTATION(HistoryRecord)
+   WCDB_SYNTHESIZE(<#SYNTHESIZE1#>)
+   WCDB_SYNTHESIZE(<#SYNTHESIZE2#>)
+   WCDB_SYNTHESIZE(<#SYNTHESIZE3#>)
+   WCDB_SYNTHESIZE(<#SYNTHESIZE4#>)
+   WCDB_SYNTHESIZE_COLUMN(<#SYNTHESIZE5#>, "<#column name#>")   // Custom column name
 
-WCDB_PRIMARY_AUTO_INCREMENT(<#SYNTHESIZE#>)
+   WCDB_PRIMARY_AUTO_INCREMENT(<#SYNTHESIZE#>)
 
-WCDB_INDEX(<#_index_subfix#>, <#SYNTHESIZE#>)
+   WCDB_INDEX(<#_index_subfix#>, <#SYNTHESIZE#>)
  */
 WCDB_IMPLEMENTATION(HistoryRecord)
 //WCDB_SYNTHESIZE(identifier)
@@ -31,20 +31,22 @@ WCDB_SYNTHESIZE(myBMI)
 WCDB_SYNTHESIZE(updatedTime)
 WCDB_SYNTHESIZE(createdTime)
 
-- (instancetype)initWithBodyWeight:(float)bw bodyFat:(float)bf myBMI:(float)bmi{
+- (instancetype)initWithBodyWeight:(CGFloat)bw bodyFat:(CGFloat)bf myBMI:(CGFloat)bmi {
     self = [super init];
+
     if (self) {
         _bodyWeight = bw;
         _bodyFat = bf;
         _myBMI = bmi;
-        self.updatedTime = [NSDate now].timeIntervalSince1970;
-        self.createdTime = [NSDate now].timeIntervalSince1970;
+        self.updatedTime = [NSDate date].timeIntervalSince1970;
+        self.createdTime = [NSDate date].timeIntervalSince1970;
     }
+
     return self;
-    
 }
-    
-- (NSString *)description{
-    return [NSString stringWithFormat:@"体重:%fkg, 时间:%lld", self.bodyWeight,self.createdTime];
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"体重:%fkg, 时间:%lld", self.bodyWeight, self.createdTime];
 }
+
 @end

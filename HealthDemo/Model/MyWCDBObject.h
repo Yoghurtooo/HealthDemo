@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MyWCDBObject : NSObject
 
 //记录更新时间
-@property(nonatomic, assign) int64_t updatedTime;
+@property (nonatomic, assign) UInt64 updatedTime;
 //记录创建时间
-@property(nonatomic, assign) int64_t createdTime;
+@property (nonatomic, assign) UInt64 createdTime;
 
 @end
 

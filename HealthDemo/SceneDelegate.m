@@ -5,9 +5,9 @@
 //  Created by ycw on 2023/7/25.
 //
 
-#import "SceneDelegate.h"
-#import "HomeVC.h"
 #import "HealthKitTool.h"
+#import "HomeVC.h"
+#import "SceneDelegate.h"
 
 
 @interface SceneDelegate ()
@@ -22,18 +22,26 @@
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     UIWindowScene *windowScene = (UIWindowScene *)scene;
+
     self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     self.window.frame = windowScene.coordinateSpace.bounds;
     self.window.backgroundColor = [UIColor whiteColor];
 
-    
+
     HomeVC *vc = [[HomeVC alloc] init];
-    [self.window setRootViewController:vc];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+
+    [self.window setRootViewController:navi];
     [self.window makeKeyAndVisible];
 
-    [HealthKitTool requestPermissions];
+    if ([HealthKitTool isAvailable]) {
+        //可以使用
+        [HealthKitTool requestPermissions];
+    } else {
+        //无法使用同步功能
+        NSLog(@"无法使用同步功能");
+    }
 }
-
 
 - (void)sceneDidDisconnect:(UIScene *)scene {
     // Called as the scene is being released by the system.
@@ -42,30 +50,25 @@
     // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
 }
 
-
 - (void)sceneDidBecomeActive:(UIScene *)scene {
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
 }
-
 
 - (void)sceneWillResignActive:(UIScene *)scene {
     // Called when the scene will move from an active state to an inactive state.
     // This may occur due to temporary interruptions (ex. an incoming phone call).
 }
 
-
 - (void)sceneWillEnterForeground:(UIScene *)scene {
     // Called as the scene transitions from the background to the foreground.
     // Use this method to undo the changes made on entering the background.
 }
-
 
 - (void)sceneDidEnterBackground:(UIScene *)scene {
     // Called as the scene transitions from the foreground to the background.
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
 }
-
 
 @end

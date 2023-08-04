@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 //在vc上展示简单提示信息框（只有OK选项的提示框）
 + (void)showRemindAlertInVC:(UIViewController *)vc withMessage:(NSString *)msg;
 
-+ (instancetype) __unavailable init;
++ (instancetype)__unavailable init;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum{
+typedef enum {
     InputComplianceCorrect,//格式正确
     InputComplianceErrorIncomplete,//未输入完整
     InputComplianceErrorDatatype,//输入数据格式错误
@@ -22,7 +22,8 @@ typedef enum{
 //检查InputView中所有textView的输入数据是否合规
 + (InputCompliance)checkComplianceForInputView:(MyInputView *)myInputView;
 
-+ (instancetype) __unavailable init;
++ (instancetype)__unavailable init;
+
 @end
 
 NS_ASSUME_NONNULL_END

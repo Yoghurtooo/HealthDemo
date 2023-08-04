@@ -8,8 +8,8 @@
 #import <Foundation/Foundation.h>
 
 #import "Constants.h"
-#import "MyInputView.h"
 #import "HistoryRecord.h"
+#import "MyInputView.h"
 #import "MyWCDBObject.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 //创建表
 + (BOOL)createTableWithName:(nonnull NSString *)tableName withClass:(Class)className;
 
-- (instancetype) __unavailable init;
+- (instancetype)__unavailable init;
 @end
 
 NS_ASSUME_NONNULL_END

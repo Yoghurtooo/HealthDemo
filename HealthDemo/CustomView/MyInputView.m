@@ -16,6 +16,7 @@ NSString *const kMyBMI = @"BMI";
 @property(nonatomic, assign) CGFloat labelWidth; //文本label长度
 @property(nonatomic, assign) CGFloat stackHeight; //每行高度
 @property(nonatomic, assign) CGFloat stackPadding; //行内各个控件间距
+@property(nonatomic, assign) UIView* stack; //存储label跟textField
 
 @end
 
@@ -58,13 +59,13 @@ NSString *const kMyBMI = @"BMI";
     
     for (int i = 0; i<textArr.count; i++) {
         NSString* text = [textArr objectAtIndex:i];
-        [self createInputModelWithLabeText:text label:[labelArr objectAtIndex:i] textField:[tfArr objectAtIndex:i] index:i];
+        [self createInputModelWithLabelText:text label:[labelArr objectAtIndex:i] textField:[tfArr objectAtIndex:i] index:i];
     }
     
 }
 
 //创建每行的输入框和Label
-- (void)createInputModelWithLabeText:(NSString *)text label:(UILabel *)label textField:(UITextField *)tf index:(int)index{
+- (void)createInputModelWithLabelText:(NSString *)text label:(UILabel *)label textField:(UITextField *)tf index:(int)index{
     
     label.font = [UIFont systemFontOfSize:18];
     label.text = text;
@@ -74,28 +75,28 @@ NSString *const kMyBMI = @"BMI";
     tf.textAlignment = NSTextAlignmentCenter;
     
     UIView* stack = [[UIView alloc] init];
+    _stack = stack;
     [stack addSubview:label];
     [stack addSubview:tf];
-    
     [self addSubview:stack];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(_labelWidth));
-        make.left.equalTo(stack);
-        make.centerY.equalTo(stack);
+        make.width.mas_equalTo(@(_labelWidth));
+        make.leading.mas_equalTo(stack);
+        make.centerY.mas_equalTo(stack);
     }];
     
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(label.mas_right).offset(_stackPadding);
-        make.right.equalTo(stack);
-        make.centerY.equalTo(stack);
+        make.leading.mas_equalTo(label.mas_trailing).offset(_stackPadding);
+        make.trailing.mas_equalTo(stack);
+        make.centerY.mas_equalTo(stack);
     }];
     
     [stack mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.height.equalTo(@(_stackHeight));
-           make.left.equalTo(self);
-           make.right.equalTo(self);
-           make.top.equalTo(self).offset((_stackHeight + _stackPadding)*index);
+           make.height.mas_equalTo(@(_stackHeight));
+           make.leading.mas_equalTo(self);
+           make.trailing.mas_equalTo(self);
+           make.top.mas_equalTo(self).offset((_stackHeight + _stackPadding)*index);
        }];
 
     //下划线
@@ -104,10 +105,10 @@ NSString *const kMyBMI = @"BMI";
     [self addSubview:underline];
     
     [underline mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@1);
-        make.left.equalTo(tf);
-        make.right.equalTo(tf);
-        make.top.equalTo(tf.mas_bottom);
+        make.height.mas_equalTo(@1);
+        make.leading.mas_equalTo(tf);
+        make.trailing.mas_equalTo(tf);
+        make.top.mas_equalTo(tf.mas_bottom);
     
     }];
     

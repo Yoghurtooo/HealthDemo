@@ -82,7 +82,6 @@
 		00188AEB2A70F10B00F6C146 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		00188AED2A710E4800F6C146 /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
 		00188AEE2A710E4800F6C146 /* DBTool.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DBTool.mm; sourceTree = "<group>"; };
-		0094167C2A78DA8E0094690F /* CellCallbackDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellCallbackDelegate.h; sourceTree = "<group>"; };
 		0094167D2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HistoryTableVC+CellCallbackDelegate.h"; sourceTree = "<group>"; };
 		0094167E2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HistoryTableVC+CellCallbackDelegate.m"; sourceTree = "<group>"; };
 		009416802A7A4A260094690F /* HealthKitTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthKitTool.h; sourceTree = "<group>"; };
@@ -166,7 +165,6 @@
 				00188A9D2A6FBC6D00F6C146 /* SceneDelegate.h */,
 				00188A9E2A6FBC6D00F6C146 /* SceneDelegate.m */,
 				00188AEB2A70F10B00F6C146 /* Constants.h */,
-				0094167C2A78DA8E0094690F /* CellCallbackDelegate.h */,
 				00188AF12A7117DA00F6C146 /* Tool */,
 				00188ADD2A70B5B200F6C146 /* Model */,
 				00188AD92A70B0E400F6C146 /* CustomView */,
@@ -704,6 +702,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -738,6 +737,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -5,8 +5,8 @@
 //  Created by ycw on 2023/7/26.
 //
 
-#import "HistoryTableVC.h"
 #import "HistoryTableVC+CellCallbackDelegate.h"
+#import "HistoryTableVC.h"
 
 @interface HistoryTableVC ()
 
@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     //bar设置
     self.navigationItem.title = @"历史记录";
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
@@ -26,7 +26,7 @@
     [backBtn setTarget:self];
     [backBtn setAction:@selector(backRootVC)];
     self.navigationItem.leftBarButtonItem = backBtn;
-    
+
     //下拉刷新
     MJRefreshHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self requestData];
@@ -35,26 +35,27 @@
     }];
     [header setAutomaticallyChangeAlpha:YES];
     self.tableView.mj_header = header;
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (void)viewWillAppear:(BOOL)animated{
+
+- (void)viewWillAppear:(BOOL)animated {
     //请求本地数据库数据
     [self.tableView.mj_header beginRefreshing];
 }
 
-- (void)requestData{
+- (void)requestData {
     //请求本地数据库数据
     self.recordArr = [DBTool getObjectsInTable:kHistoryRecordTable withClass:HistoryRecord.class];
 }
 
-- (void)backRootVC{
+- (void)backRootVC {
 //    NSLog(@"退出界面");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
@@ -69,77 +70,78 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellId = @"historyCellID";
-    
+
     HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
-    if (cell == nil){
+    if (cell == nil) {
         cell = [[HistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    
+
     //获取index对应数据
     HistoryRecord *record = self.recordArr[indexPath.row];
-    
+
     //更新cell数据
     cell.indexPath = indexPath;
-    [cell updateViewWithRecord:record];
-    
+    cell.record = record;
+
     //设置代理
     cell.delegate = self;
-    
+
     return cell;
 }
 
 #pragma mark - Table view delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 128;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+   // Override to support conditional editing of the table view.
+   - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+   }
+ */
+
+/*
+   // Override to support editing the table view.
+   - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+    }
+   }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+   // Override to support rearranging the table view.
+   - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+   }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+   // Override to support conditional rearranging of the table view.
+   - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
-}
-*/
+   }
+ */
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+   }
+ */
 
 @end

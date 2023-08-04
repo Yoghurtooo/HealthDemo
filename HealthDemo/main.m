@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 //main添加注释
+//abc
 int main(int argc, char * argv[]) {
     NSString * appDelegateClassName;
     @autoreleasepool {
