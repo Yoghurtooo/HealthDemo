@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+//main添加注释
 int main(int argc, char * argv[]) {
     NSString * appDelegateClassName;
     @autoreleasepool {
