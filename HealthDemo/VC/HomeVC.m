@@ -113,15 +113,14 @@
 
                                    if (!success && saveResult) {
                                        //本地保存成功，但是同步失败
-                                       str = @"保存本地数据成功，但是同步失败，请检查是否已授权";
+                                       str = @"保存本地数据成功，但是同步失败，请稍后再试";
                                    } else {
                                        //本地保存成功，同步成功
                                        str = @"保存成功";
                                    }
 
                                    //显示提示框
-                                   [AlertTool showRemindAlertInVC:self
-                                                      withMessage:str];
+                                   [AlertTool showRemindAlertInVC:self withMessage:str];
                                });
             }];
         } else {
@@ -186,7 +185,7 @@
     thunder.backgroundColor = [UIColor yellowColor];
     thunder.layer.borderWidth = 1;
     thunder.layer.borderColor = [UIColor systemGrayColor].CGColor;
-    
+
     UIView *stack = [[UIView alloc] init];
     _stack = stack;
     [stack addSubview:label];
@@ -216,7 +215,6 @@
 
     [self.view addSubview:save];
     [self.view addSubview:history];
-
 }
 
 - (void)createConstraints {
@@ -228,7 +226,7 @@
         make.leading.mas_equalTo(self.view).offset(64);
         make.trailing.mas_equalTo(self.view).offset(-64);
     }];
-    
+
     //同步行约束
     [_syncSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(@(32));
@@ -250,14 +248,14 @@
         make.trailing.mas_equalTo(_syncSwitch.mas_leading);
         make.leading.mas_equalTo(_stack);
     }];
-    
+
     [_stack mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(@(64));
         make.top.mas_equalTo(_myInputView.mas_bottom);
         make.leading.mas_equalTo(_myInputView);
         make.trailing.mas_equalTo(_myInputView);
     }];
-    
+
     //按钮约束
     [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(@(32));
@@ -265,7 +263,7 @@
         make.trailing.mas_equalTo(_myInputView);
         make.top.mas_equalTo(_stack.mas_bottom).offset(16);
     }];
-    
+
     [_historyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(@(32));
         make.leading.mas_equalTo(_myInputView);

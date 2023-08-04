@@ -45,9 +45,8 @@
 
     //体重数据
     HKQuantityType *bwType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];
-    HKQuantity *bwQuantity = [HKQuantity quantityWithUnit:[HKUnit gramUnit] doubleValue:bw * 1000];
-    HKQuantitySample *bodyWeight = [HKQuantitySample quantitySampleWithType:bwType quantity:bwQuantity startDate:date endDate:date ];
-
+    HKQuantity *bwQuantity = [HKQuantity quantityWithUnit:[HKUnit gramUnitWithMetricPrefix:HKMetricPrefixKilo] doubleValue:bw];
+    HKQuantitySample *bodyWeight = [HKQuantitySample quantitySampleWithType:bwType quantity:bwQuantity startDate:date endDate:date];
 
     //体脂数据
     HKQuantityType *bfType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyFatPercentage];
@@ -55,9 +54,24 @@
     HKQuantitySample *bodyFat = [HKQuantitySample quantitySampleWithType:bfType quantity:bfQuantity startDate:date endDate:date];
 
     HKHealthStore *store = [[HKHealthStore alloc] init];
-
-    //保存
-    [store saveObjects:@[bodyWeight, bodyFat] withCompletion:completion];
+    
+    //判断权限状态
+    NSMutableArray<HKQuantitySample *> *saveSampleArr = [[NSMutableArray alloc] init];
+    if ([store authorizationStatusForType:bwType] == HKAuthorizationStatusSharingAuthorized) {
+        //同意同步体重数据
+        [saveSampleArr addObject:bodyWeight];
+    }
+    if ([store authorizationStatusForType:bfType] == HKAuthorizationStatusSharingAuthorized) {
+        //同意同步体脂数据
+        [saveSampleArr addObject:bodyFat];
+    }
+    
+    if (saveSampleArr.count > 0){
+        //保存
+        [store saveObjects:saveSampleArr withCompletion:completion];
+    }else{
+        NSLog(@"没有任何权限");
+    }
 }
 
 @end
