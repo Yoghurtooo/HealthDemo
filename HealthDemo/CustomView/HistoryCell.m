@@ -67,7 +67,6 @@ typedef void (^BtnNormalConstraint)(MASConstraintMaker *);
     editBtn.backgroundColor = [UIColor systemGreenColor];
     editBtn.layer.masksToBounds = YES;
     editBtn.layer.cornerRadius = 8;
-    [editBtn setEnabled:YES];
 
     [_editBtn addTarget:self action:@selector(toEditVC) forControlEvents:UIControlEventTouchUpInside];
 
@@ -81,7 +80,6 @@ typedef void (^BtnNormalConstraint)(MASConstraintMaker *);
     delBtn.backgroundColor = [UIColor systemRedColor];
     delBtn.layer.masksToBounds = YES;
     delBtn.layer.cornerRadius = 8;
-    [delBtn setEnabled:YES];
 
     [_delBtn addTarget:self action:@selector(delRecord) forControlEvents:UIControlEventTouchUpInside];
 
@@ -110,8 +108,8 @@ typedef void (^BtnNormalConstraint)(MASConstraintMaker *);
 //创建约束
 - (void)createConstraints {
     BtnNormalConstraint cons = ^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(@(32));
-        make.height.mas_equalTo(@(64));
+        make.width.mas_equalTo(32);
+        make.height.mas_equalTo(64);
         make.centerY.mas_equalTo(self.contentView);
     };
 
@@ -130,19 +128,19 @@ typedef void (^BtnNormalConstraint)(MASConstraintMaker *);
     int kLabelWidth = 128;
 
     [_bodyWeightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(@(kLabelWidth));
+        make.width.mas_equalTo(kLabelWidth);
         make.top.mas_equalTo(self.contentView).offset(kPadding);
         make.leading.mas_equalTo(self.contentView).offset(kPadding);
     }];
 
     [_bodyFatLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(@(kLabelWidth));
+        make.width.mas_equalTo(kLabelWidth);
         make.top.mas_equalTo(self.contentView).offset(kPadding);
         make.leading.mas_equalTo(_bodyWeightLabel.mas_trailing).offset(kPadding);
     }];
 
     [_myBMILabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(@(kLabelWidth));
+        make.width.mas_equalTo(kLabelWidth);
         make.top.mas_equalTo(_bodyWeightLabel.mas_bottom).offset(kPadding);
         make.leading.mas_equalTo(self.contentView).offset(kPadding);
     }];

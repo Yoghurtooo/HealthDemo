@@ -22,7 +22,6 @@
 		00188AE72A70C8D400F6C146 /* EditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 00188AE62A70C8D400F6C146 /* EditVC.m */; };
 		00188AEC2A70F10B00F6C146 /* Constants.h in Sources */ = {isa = PBXBuildFile; fileRef = 00188AEB2A70F10B00F6C146 /* Constants.h */; };
 		00188AEF2A710E4800F6C146 /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00188AEE2A710E4800F6C146 /* DBTool.mm */; };
-		0094167F2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0094167E2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m */; };
 		009416822A7A4A260094690F /* HealthKitTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 009416812A7A4A260094690F /* HealthKitTool.m */; };
 		009416852A7A4BBC0094690F /* CheckTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 009416842A7A4BBC0094690F /* CheckTool.m */; };
 		00D5BC8C2A7B567300092310 /* AlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D5BC8B2A7B567300092310 /* AlertTool.m */; };
@@ -79,8 +78,6 @@
 		00188AEB2A70F10B00F6C146 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		00188AED2A710E4800F6C146 /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
 		00188AEE2A710E4800F6C146 /* DBTool.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DBTool.mm; sourceTree = "<group>"; };
-		0094167D2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HistoryTableVC+CellCallbackDelegate.h"; sourceTree = "<group>"; };
-		0094167E2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HistoryTableVC+CellCallbackDelegate.m"; sourceTree = "<group>"; };
 		009416802A7A4A260094690F /* HealthKitTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthKitTool.h; sourceTree = "<group>"; };
 		009416812A7A4A260094690F /* HealthKitTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthKitTool.m; sourceTree = "<group>"; };
 		009416832A7A4BBC0094690F /* CheckTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckTool.h; sourceTree = "<group>"; };
@@ -196,8 +193,6 @@
 				00188AA12A6FBC6D00F6C146 /* HomeVC.m */,
 				00188AD52A70B08700F6C146 /* HistoryTableVC.h */,
 				00188AD62A70B08700F6C146 /* HistoryTableVC.m */,
-				0094167D2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.h */,
-				0094167E2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m */,
 				00188AE52A70C8D400F6C146 /* EditVC.h */,
 				00188AE62A70C8D400F6C146 /* EditVC.m */,
 			);
@@ -517,7 +512,6 @@
 				00188AD72A70B08700F6C146 /* HistoryTableVC.m in Sources */,
 				00188ADC2A70B58E00F6C146 /* HistoryCell.m in Sources */,
 				00188A9C2A6FBC6D00F6C146 /* AppDelegate.m in Sources */,
-				0094167F2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m in Sources */,
 				00188AD12A6FBC9A00F6C146 /* MyInputView.m in Sources */,
 				00188AEC2A70F10B00F6C146 /* Constants.h in Sources */,
 				00188AEF2A710E4800F6C146 /* DBTool.mm in Sources */,

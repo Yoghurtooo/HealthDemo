@@ -81,7 +81,7 @@ NSString *const kMyBMI = @"BMI";
     [self addSubview:stack];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(@(_labelWidth));
+        make.width.mas_equalTo(_labelWidth);
         make.leading.mas_equalTo(stack);
         make.centerY.mas_equalTo(stack);
     }];
@@ -93,7 +93,7 @@ NSString *const kMyBMI = @"BMI";
     }];
     
     [stack mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.height.mas_equalTo(@(_stackHeight));
+           make.height.mas_equalTo(_stackHeight);
            make.leading.mas_equalTo(self);
            make.trailing.mas_equalTo(self);
            make.top.mas_equalTo(self).offset((_stackHeight + _stackPadding)*index);

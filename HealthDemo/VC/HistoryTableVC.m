@@ -6,11 +6,13 @@
 //
 
 #import <Masonry/Masonry.h>
-#import "HistoryTableVC+CellCallbackDelegate.h"
+
 #import "HistoryTableVC.h"
 
 
 @interface HistoryTableVC ()
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -46,7 +48,6 @@ NSString *const cellId = @"historyCellID";
     //bar设置
     self.navigationItem.title = @"历史记录";
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
-    [backBtn setEnabled:YES];
     [backBtn setImage:[UIImage imageNamed:@"chevron.left"]];
     [backBtn setTarget:self];
     [backBtn setAction:@selector(backRootVC)];
@@ -119,48 +120,44 @@ NSString *const cellId = @"historyCellID";
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
 }
 
-/*
-   // Override to support conditional editing of the table view.
-   - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-   }
- */
+- (void)toEditVCWithRecord:(HistoryRecord *)record {
+    EditVC *editVC = [[EditVC alloc]initWithRecord:record];
 
-/*
-   // Override to support editing the table view.
-   - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-   }
- */
+    editVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.navigationController pushViewController:editVC animated:YES];
+}
 
-/*
-   // Override to support rearranging the table view.
-   - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-   }
- */
+- (void)delRecord:(HistoryRecord *)record {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示信息" message:@"是否确认删除？" preferredStyle:UIAlertControllerStyleAlert];
 
-/*
-   // Override to support conditional rearranging of the table view.
-   - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-   }
- */
+    //确认删除
+    UIAlertAction *submit = [UIAlertAction actionWithTitle:@"确认"
+                                                     style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction *_Nonnull action) {
+        //内存数据
+        for (HistoryRecord *obj in self.recordArr) {
+            if (obj.createdTime == record.createdTime) {
+                [self.recordArr removeObject:obj];
+                break;
+            }
+        }
 
-/*
- #pragma mark - Navigation
+        [self.tableView.mj_header beginRefreshing];
 
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-   }
- */
+        //数据库数据
+        [HistoryRecordDB deleteObject:record];
+    }];
+
+    //取消删除
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction *_Nonnull action) {
+    }];
+
+    [alert addAction:cancel];
+    [alert addAction:submit];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 @end

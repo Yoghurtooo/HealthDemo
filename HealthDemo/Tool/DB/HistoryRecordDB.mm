@@ -10,43 +10,42 @@
 #import "HistoryRecord+WCTTableCoding.h"
 #import "HistoryRecordDB.h"
 
-//当前DB操作类，操作的表名
 NSString *const tableName = kHistoryRecordTable;
 
 @implementation HistoryRecordDB
 
 + (BOOL)insertObject:(HistoryRecord *)object {
     WCTDatabase *database = [DBTool shareDatabase];
-    WCTTable *table = [database getTable:tableName withClass:HistoryRecord.class];
-    
-    BOOL result = [table insertObject:object];
+    BOOL result = [database insertObject:object intoTable:tableName];
+
     return result;
 }
 
 + (BOOL)deleteObject:(HistoryRecord *)object {
     WCTDatabase *database = [DBTool shareDatabase];
-    WCTTable *table = [database getTable:tableName withClass:HistoryRecord.class];
     //开始删除
-    BOOL result = [table deleteObjectsWhere:HistoryRecord.createdTime == object.createdTime];
+    BOOL result = [database deleteFromTable:tableName where:HistoryRecord.createdTime == object.createdTime];
 
     return result;
 }
 
 + (BOOL)updateObject:(HistoryRecord *)object {
     WCTDatabase *database = [DBTool shareDatabase];
-    WCTTable *table = [database getTable:tableName withClass:HistoryRecord.class];
 
     object.updatedTime = [NSDate date].timeIntervalSince1970;
-    BOOL result = [table updateProperties:HistoryRecord.allProperties toObject:object where:HistoryRecord.createdTime == object.createdTime];
+    BOOL result = [database updateTable:tableName setProperties:HistoryRecord.allProperties toObject:object where:HistoryRecord.createdTime == object.createdTime];
+
     return result;
 }
 
 + (NSMutableArray<HistoryRecord *> *)getObjectsByOrder:(BOOL)isDESC withColumn:(NSString *)columnName {
     WCTDatabase *database = [DBTool shareDatabase];
-    WCTTable *table = [database getTable:tableName withClass:HistoryRecord.class];
+    WCTTable *table = [database getTable:kHistoryRecordTable withClass:HistoryRecord.class];
     WCDB::Order order = isDESC ? WCTOrderedDescending : WCTOrderedAscending;
 
-    return [[NSMutableArray alloc] initWithArray:[table getObjectsOrders:WCDB::Column(columnName).asOrder(order)]];
+    NSArray<HistoryRecord *> *arr = [database getObjectsOfClass:HistoryRecord.class fromTable:tableName orders:WCDB::Column(columnName).asOrder(order)];
+
+    return [[NSMutableArray alloc] initWithArray:arr];
 }
 
 @end

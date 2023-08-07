@@ -201,7 +201,6 @@
     save.backgroundColor = [UIColor systemBlueColor];
     save.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     save.layer.masksToBounds = YES;
-    [save setEnabled:YES];
     save.layer.cornerRadius = 8;
 
     UIButton *history = [[UIButton alloc] init];
@@ -210,7 +209,6 @@
     history.backgroundColor = [UIColor systemGreenColor];
     history.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     history.layer.masksToBounds = YES;
-    [history setEnabled:YES];
     history.layer.cornerRadius = 8;
 
     [self.view addSubview:save];
@@ -220,7 +218,7 @@
 - (void)createConstraints {
     //输入框约束
     [_myInputView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@(200));
+        make.height.mas_equalTo(200);
         make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(64);
 //        make.top.mas_equalTo(@(100));
         make.leading.mas_equalTo(self.view).offset(64);
@@ -229,14 +227,14 @@
 
     //同步行约束
     [_syncSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@(32));
-        make.width.mas_equalTo(@(48));
+        make.height.mas_equalTo(32);
+        make.width.mas_equalTo(48);
         make.centerY.mas_equalTo(_stack);
         make.trailing.mas_equalTo(_stack);
     }];
 
     [_thunderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.width.mas_equalTo(@(16));
+        make.height.width.mas_equalTo(16);
         make.trailing.mas_equalTo(_syncSwitch);
         make.bottom.mas_equalTo(_syncSwitch.mas_top).offset(8);
     }];
@@ -250,7 +248,7 @@
     }];
 
     [_stack mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@(64));
+        make.height.mas_equalTo(64);
         make.top.mas_equalTo(_myInputView.mas_bottom);
         make.leading.mas_equalTo(_myInputView);
         make.trailing.mas_equalTo(_myInputView);
@@ -258,14 +256,14 @@
 
     //按钮约束
     [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@(32));
+        make.height.mas_equalTo(32);
         make.leading.mas_equalTo(_myInputView);
         make.trailing.mas_equalTo(_myInputView);
         make.top.mas_equalTo(_stack.mas_bottom).offset(16);
     }];
 
     [_historyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@(32));
+        make.height.mas_equalTo(32);
         make.leading.mas_equalTo(_myInputView);
         make.trailing.mas_equalTo(_myInputView);
         make.top.mas_equalTo(_saveBtn.mas_bottom).offset(16);

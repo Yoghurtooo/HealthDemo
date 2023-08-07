@@ -49,7 +49,6 @@
     saveBtn.backgroundColor = [UIColor systemBlueColor];
     saveBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     saveBtn.layer.masksToBounds = YES;
-    [saveBtn setEnabled:YES];
     saveBtn.layer.cornerRadius = 8;
 
     [saveBtn addTarget:self action:@selector(editRecord) forControlEvents:UIControlEventTouchUpInside];
@@ -65,7 +64,7 @@
     }];
 
     [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@(32));
+        make.height.mas_equalTo(32);
         make.leading.mas_equalTo(_myInputView);
         make.trailing.mas_equalTo(_myInputView);
         make.top.mas_equalTo(_myInputView.mas_bottom).offset(32);
