@@ -26,8 +26,8 @@
 		0094167F2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0094167E2A78DC170094690F /* HistoryTableVC+CellCallbackDelegate.m */; };
 		009416822A7A4A260094690F /* HealthKitTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 009416812A7A4A260094690F /* HealthKitTool.m */; };
 		009416852A7A4BBC0094690F /* CheckTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 009416842A7A4BBC0094690F /* CheckTool.m */; };
-		00D5BC892A7B4C5400092310 /* MyWCDBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D5BC882A7B4C5400092310 /* MyWCDBObject.m */; };
 		00D5BC8C2A7B567300092310 /* AlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D5BC8B2A7B567300092310 /* AlertTool.m */; };
+		00D5BC9A2A807E9900092310 /* HistoryRecordDB.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00D5BC992A807E9900092310 /* HistoryRecordDB.mm */; };
 		00E969222A736E120079C869 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E969212A736E120079C869 /* HealthKit.framework */; };
 		91AF4AE18BC2869312E8F1BF /* Pods_HealthDemo_HealthDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B406CD5D9CA7D34B90BAE2 /* Pods_HealthDemo_HealthDemoUITests.framework */; };
 		A303D47B805FBF66BBC6EBB4 /* Pods_HealthDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F60D0A26BD864F95DB92FA8E /* Pods_HealthDemo.framework */; };
@@ -89,10 +89,10 @@
 		009416832A7A4BBC0094690F /* CheckTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckTool.h; sourceTree = "<group>"; };
 		009416842A7A4BBC0094690F /* CheckTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckTool.m; sourceTree = "<group>"; };
 		00A463202A726BF400335F47 /* HealthDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthDemo.entitlements; sourceTree = "<group>"; };
-		00D5BC872A7B4C5400092310 /* MyWCDBObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyWCDBObject.h; sourceTree = "<group>"; };
-		00D5BC882A7B4C5400092310 /* MyWCDBObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWCDBObject.m; sourceTree = "<group>"; };
 		00D5BC8A2A7B567300092310 /* AlertTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertTool.h; sourceTree = "<group>"; };
 		00D5BC8B2A7B567300092310 /* AlertTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertTool.m; sourceTree = "<group>"; };
+		00D5BC982A807E9900092310 /* HistoryRecordDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryRecordDB.h; sourceTree = "<group>"; };
+		00D5BC992A807E9900092310 /* HistoryRecordDB.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HistoryRecordDB.mm; sourceTree = "<group>"; };
 		00E969212A736E120079C869 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		17CB7101DAC20CA12B8BAC31 /* Pods-HealthDemo-HealthDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthDemo-HealthDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-HealthDemo-HealthDemoUITests/Pods-HealthDemo-HealthDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		38A71535F09533C3D42FB0E8 /* Pods-HealthDemo-HealthDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthDemo-HealthDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-HealthDemo-HealthDemoUITests/Pods-HealthDemo-HealthDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,8 +223,6 @@
 		00188ADD2A70B5B200F6C146 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				00D5BC872A7B4C5400092310 /* MyWCDBObject.h */,
-				00D5BC882A7B4C5400092310 /* MyWCDBObject.m */,
 				00188AE02A70B88800F6C146 /* HistoryRecord.h */,
 				00188ADF2A70B88800F6C146 /* HistoryRecord+WCTTableCoding.h */,
 				00188ADE2A70B88800F6C146 /* HistoryRecord.mm */,
@@ -235,8 +233,7 @@
 		00188AF12A7117DA00F6C146 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				00188AED2A710E4800F6C146 /* DBTool.h */,
-				00188AEE2A710E4800F6C146 /* DBTool.mm */,
+				00D5BC972A807E2600092310 /* DB */,
 				009416802A7A4A260094690F /* HealthKitTool.h */,
 				009416812A7A4A260094690F /* HealthKitTool.m */,
 				009416832A7A4BBC0094690F /* CheckTool.h */,
@@ -245,6 +242,17 @@
 				00D5BC8B2A7B567300092310 /* AlertTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		00D5BC972A807E2600092310 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				00188AED2A710E4800F6C146 /* DBTool.h */,
+				00188AEE2A710E4800F6C146 /* DBTool.mm */,
+				00D5BC982A807E9900092310 /* HistoryRecordDB.h */,
+				00D5BC992A807E9900092310 /* HistoryRecordDB.mm */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		0404009BB359F39723FAE519 /* Frameworks */ = {
@@ -508,7 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D5BC892A7B4C5400092310 /* MyWCDBObject.m in Sources */,
+				00D5BC9A2A807E9900092310 /* HistoryRecordDB.mm in Sources */,
 				009416852A7A4BBC0094690F /* CheckTool.m in Sources */,
 				00188AA22A6FBC6D00F6C146 /* HomeVC.m in Sources */,
 				00188AD72A70B08700F6C146 /* HistoryTableVC.m in Sources */,

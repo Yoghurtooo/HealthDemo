@@ -11,9 +11,9 @@
 #import "AlertTool.h"
 #import "CheckTool.h"
 #import "Constants.h"
-#import "DBTool.h"
 #import "HealthKitTool.h"
 #import "HistoryRecord.h"
+#import "HistoryRecordDB.h"
 #import "HistoryTableVC.h"
 
 //#import <MapKit/MapKit.h>
@@ -89,7 +89,7 @@
     HistoryRecord *record = [[HistoryRecord alloc] initWithBodyWeight:bw bodyFat:bf myBMI:bmi];
 
     //数据库操作
-    BOOL saveResult = [DBTool insertObject:record inTable:kHistoryRecordTable withClass:HistoryRecord.class];
+    BOOL saveResult = [HistoryRecordDB insertObject:record];
 
     //提示信息
     if (saveResult) {
@@ -120,7 +120,8 @@
                                    }
 
                                    //显示提示框
-                                   [AlertTool showRemindAlertInVC:self withMessage:str];
+                                   [AlertTool showRemindAlertInVC:self
+                                                      withMessage:str];
                                });
             }];
         } else {

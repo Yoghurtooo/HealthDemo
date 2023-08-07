@@ -5,7 +5,7 @@
 //  Created by ycw on 2023/8/1.
 //
 
-#import "DBTool.h"
+#import "HistoryRecordDB.h"
 #import "HistoryTableVC+CellCallbackDelegate.h"
 
 @implementation HistoryTableVC (CellCallbackDelegate)
@@ -29,9 +29,7 @@
         [self.tableView.mj_header beginRefreshing];
 
         //数据库数据
-        [DBTool deleteObject:record
-                     inTable:kHistoryRecordTable
-                   withClass:HistoryRecord.class];
+        [HistoryRecordDB deleteObject:record];
     }];
 
     //取消删除
@@ -45,6 +43,5 @@
 
     [self presentViewController:alert animated:YES completion:nil];
 }
-
 
 @end

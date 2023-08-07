@@ -8,10 +8,10 @@
 #import <MJRefresh/MJRefresh.h>
 #import <UIKit/UIKit.h>
 #import "Constants.h"
-#import "DBTool.h"
 #import "EditVC.h"
 #import "HistoryCell.h"
 #import "HistoryRecord.h"
+#import "HistoryRecordDB.h"
 //#import "HistoryRecord+WCTTableCoding.h"
 NS_ASSUME_NONNULL_BEGIN
 

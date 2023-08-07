@@ -50,7 +50,7 @@
 
 - (void)requestData {
     //请求本地数据库数据
-    self.recordArr = [DBTool getObjectsInTable:kHistoryRecordTable withClass:HistoryRecord.class];
+    self.recordArr = [HistoryRecordDB getObjectsByOrder:YES withColumn:kCreatedTimeCol];
 }
 
 - (void)backRootVC {

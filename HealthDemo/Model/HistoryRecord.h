@@ -6,13 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MyWCDBObject.h"
 
 
-@interface HistoryRecord : MyWCDBObject
+
+@interface HistoryRecord : NSObject
 
 /*
-   // An ORM type can be any C types or any ObjC classes which conforms to NSCoding or WCTColumnCoding protocol.
+ // An ORM type can be any C types or any ObjC classes which conformsHistoryRecord WCTColumnCoding protocol.
    // An ORM property must contains a setter which can be private
    @property (nonatomic, retain) NSString *<#property1#>;
    @property (nonatomic, assign) NSInteger <#property2#>;
@@ -26,6 +26,8 @@
 @property (nonatomic, assign) CGFloat bodyWeight; //体重
 @property (nonatomic, assign) CGFloat bodyFat; //体脂
 @property (nonatomic, assign) CGFloat myBMI; //BMI
+@property (nonatomic, assign) UInt64 updatedTime; //记录更新时间
+@property (nonatomic, assign) UInt64 createdTime; //记录创建时间
 
 - (instancetype)initWithBodyWeight:(CGFloat)bw bodyFat:(CGFloat)bf myBMI:(CGFloat)bmi;
 

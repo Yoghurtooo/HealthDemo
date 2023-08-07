@@ -8,8 +8,8 @@
 #import <Masonry.h>
 #import "AlertTool.h"
 #import "CheckTool.h"
-#import "DBTool.h"
 #import "EditVC.h"
+#import "HistoryRecordDB.h"
 #import "MyInputView.h"
 
 @interface EditVC ()
@@ -54,8 +54,6 @@
 
     [saveBtn addTarget:self action:@selector(editRecord) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveBtn];
-
-    
 }
 
 - (void)createConstraints {
@@ -65,7 +63,7 @@
         make.leading.mas_equalTo(self.view).offset(64);
         make.trailing.mas_equalTo(self.view).offset(-64);
     }];
-   
+
     [_saveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(@(32));
         make.leading.mas_equalTo(_myInputView);
@@ -111,7 +109,7 @@
     self.record.updatedTime = [NSDate date].timeIntervalSince1970;
 
     //数据更新
-    BOOL saveResult = [DBTool updateObject:self.record inTable:kHistoryRecordTable withClass:HistoryRecord.class];
+    BOOL saveResult = [HistoryRecordDB updateObject:self.record];
 
     if (saveResult) {
         //保存成功

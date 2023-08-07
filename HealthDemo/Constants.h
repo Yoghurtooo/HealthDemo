@@ -13,9 +13,11 @@
 //UserDefault记录是否同步 key
 #define kIsSync @"isSync"
 
-//数据库历史记录表名
+//数据库历史记录表
 #define kHistoryRecordTable @"historyRecordTable"
 
+//数据表字段
+#define kCreatedTimeCol @"createdTime"
 
 
 
