@@ -34,18 +34,26 @@ NSString *const cellId = @"historyCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self createViews];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //请求本地数据库数据
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)createViews {
     //bar设置
     self.navigationItem.title = @"历史记录";
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
     [backBtn setEnabled:YES];
-    [backBtn setImage:[UIImage systemImageNamed:@"chevron.left"]];
+    [backBtn setImage:[UIImage imageNamed:@"chevron.left"]];
     [backBtn setTarget:self];
     [backBtn setAction:@selector(backRootVC)];
     self.navigationItem.leftBarButtonItem = backBtn;
 
     //添加tableview；
     [self.view addSubview:self.tableView];
-
     //设置约束
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
@@ -59,17 +67,6 @@ NSString *const cellId = @"historyCellID";
     }];
     [header setAutomaticallyChangeAlpha:YES];
     self.tableView.mj_header = header;
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    //请求本地数据库数据
-    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)requestData {
