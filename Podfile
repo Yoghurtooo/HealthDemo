@@ -7,8 +7,9 @@ target 'HealthDemo' do
 
   # Pods for HealthDemo
   pod 'Masonry'
-  pod 'WCDB.objc'
+  pod 'WCDB.objc','~> 2.0.2.5'
   pod 'MJRefresh'
+  pod 'LookinServer', :configurations => ['Debug']
   
   target 'HealthDemoTests' do
     inherit! :search_paths

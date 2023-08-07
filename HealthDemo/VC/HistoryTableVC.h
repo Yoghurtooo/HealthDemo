@@ -15,10 +15,12 @@
 //#import "HistoryRecord+WCTTableCoding.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HistoryTableVC : UITableViewController
+@interface HistoryTableVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 //数据源
 @property (nonatomic, strong) NSMutableArray<HistoryRecord *> *recordArr;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 

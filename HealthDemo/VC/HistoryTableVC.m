@@ -5,15 +5,31 @@
 //  Created by ycw on 2023/7/26.
 //
 
+#import <Masonry/Masonry.h>
 #import "HistoryTableVC+CellCallbackDelegate.h"
 #import "HistoryTableVC.h"
+
 
 @interface HistoryTableVC ()
 
 @end
 
+//cellID
+NSString *const cellId = @"historyCellID";
 
 @implementation HistoryTableVC
+
+- (UITableView *)tableView {
+    //懒加载
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        [_tableView registerClass:HistoryCell.class forCellReuseIdentifier:cellId];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+
+    return _tableView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +42,14 @@
     [backBtn setTarget:self];
     [backBtn setAction:@selector(backRootVC)];
     self.navigationItem.leftBarButtonItem = backBtn;
+
+    //添加tableview；
+    [self.view addSubview:self.tableView];
+
+    //设置约束
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
 
     //下拉刷新
     MJRefreshHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -69,8 +93,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellId = @"historyCellID";
-
     HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
     if (cell == nil) {

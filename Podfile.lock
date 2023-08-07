@@ -1,4 +1,7 @@
 PODS:
+  - LookinServer (1.1.7):
+    - LookinServer/Core (= 1.1.7)
+  - LookinServer/Core (1.1.7)
   - Masonry (1.1.0)
   - MJRefresh (3.7.5)
   - WCDB.objc (2.0.2.5):
@@ -9,23 +12,26 @@ PODS:
   - WCDBOptimizedSQLCipher (1.4.1)
 
 DEPENDENCIES:
+  - LookinServer
   - Masonry
   - MJRefresh
-  - WCDB.objc
+  - WCDB.objc (~> 2.0.2.5)
 
 SPEC REPOS:
   trunk:
+    - LookinServer
     - Masonry
     - MJRefresh
     - WCDB.objc
     - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
+  LookinServer: 4ce0469b066871525611d009d8d16a7a50c23491
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   WCDB.objc: b979e526e61c807d31f2a9551082ad75a7de6e83
   WCDBOptimizedSQLCipher: 880ec8aa6cda6b27e4c72b30bf0cc01771deda6f
 
-PODFILE CHECKSUM: 1f1d2235a39268ef2cf13b1c1961555a613cb9a1
+PODFILE CHECKSUM: c0d5bbf56e4f684a21afa3473cced88158b0e76f
 
 COCOAPODS: 1.12.1
