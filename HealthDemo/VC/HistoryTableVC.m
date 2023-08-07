@@ -92,9 +92,9 @@ NSString *const cellId = @"historyCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
 
-    if (cell == nil) {
-        cell = [[HistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-    }
+//    if (cell == nil) {
+//        cell = [[HistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+//    }
 
     //获取index对应数据
     HistoryRecord *record = self.recordArr[indexPath.row];

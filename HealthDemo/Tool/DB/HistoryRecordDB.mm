@@ -17,8 +17,9 @@ NSString *const tableName = kHistoryRecordTable;
 
 + (BOOL)insertObject:(HistoryRecord *)object {
     WCTDatabase *database = [DBTool shareDatabase];
-    BOOL result = [database createTable:tableName withClass:HistoryRecord.class];
-
+    WCTTable *table = [database getTable:tableName withClass:HistoryRecord.class];
+    
+    BOOL result = [table insertObject:object];
     return result;
 }
 

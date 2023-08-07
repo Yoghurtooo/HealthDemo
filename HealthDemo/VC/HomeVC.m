@@ -120,8 +120,7 @@
                                    }
 
                                    //显示提示框
-                                   [AlertTool showRemindAlertInVC:self
-                                                      withMessage:str];
+                                   [AlertTool showRemindAlertInVC:self withMessage:str];
                                });
             }];
         } else {
