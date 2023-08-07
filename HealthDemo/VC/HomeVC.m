@@ -243,8 +243,8 @@
     }];
 
     [_syncLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.height.mas_equalTo(@(64));
-        //        make.width.mas_equalTo(@(64));
+//        make.height.mas_equalTo(@(64));
+//        make.width.mas_equalTo(@(64));
         make.centerY.mas_equalTo(_stack);
         make.trailing.mas_equalTo(_syncSwitch.mas_leading);
         make.leading.mas_equalTo(_stack);

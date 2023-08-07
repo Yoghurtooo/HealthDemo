@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //跳转编辑页面
 - (void)toEditVCWithRecord:(HistoryRecord *)record;
-//通过index删除对应记录
+//删除对应记录
 - (void)delRecord:(HistoryRecord *)record;
 
 @end
